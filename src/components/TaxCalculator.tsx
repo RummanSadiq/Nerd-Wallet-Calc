@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { taxFormSchema, TaxFormSchema } from "../schemas/taxFormSchema";
@@ -70,13 +70,13 @@ const TaxCalculator: React.FC = () => {
   };
 
   // Watch form values for real-time updates
-  React.useEffect(() => {
+  useEffect(() => {
     const subscription = form.watch(handleFormChange);
     return () => subscription.unsubscribe();
   }, [form]);
 
   // Calculate initial result on component mount
-  React.useEffect(() => {
+  useEffect(() => {
     const defaultValues = form.getValues();
     if (defaultValues.annualGrossIncome > 0) {
       const formData: TaxFormData = {
