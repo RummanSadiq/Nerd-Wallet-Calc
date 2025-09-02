@@ -1,0 +1,91 @@
+.tax-results {
+  .result-headline {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border-light);
+    
+    h3 {
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin: 0 0 var(--spacing-md) 0;
+      line-height: var(--line-height-tight);
+    }
+    
+    .amount {
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-4xl);
+      font-weight: 700;
+      line-height: var(--line-height-tight);
+      
+      &.refund {
+        color: var(--color-success);
+      }
+      
+      &.owed {
+        color: var(--color-danger);
+      }
+    }
+  }
+  
+  .breakdown-section {
+    margin-bottom: var(--spacing-xl);
+    
+    h4 {
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin: 0 0 var(--spacing-md) 0;
+      padding-bottom: var(--spacing-sm);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    
+    .breakdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid var(--color-border-light);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      span:first-child {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
+      
+      span:last-child {
+        color: var(--color-text-primary);
+        font-weight: 600;
+        text-align: right;
+      }
+      
+      &.deduction {
+        span:last-child {
+          color: var(--color-success);
+        }
+      }
+      
+      &.total {
+        border-top: 2px solid var(--color-border);
+        padding-top: var(--spacing-md);
+        margin-top: var(--spacing-sm);
+        
+        span:first-child {
+          font-weight: 600;
+          color: var(--color-text-primary);
+        }
+        
+        span:last-child {
+          font-weight: 700;
+          color: var(--color-text-primary);
+        }
+      }
+    }
+  }
+}

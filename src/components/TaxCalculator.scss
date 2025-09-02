@@ -1,0 +1,53 @@
+.tax-calculator {
+  .calculator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+  }
+  
+  .tax-details-section,
+  .tax-results-section {
+    h2 {
+      font-family: var(--font-family-heading);
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin: 0 0 var(--spacing-lg) 0;
+      padding-bottom: var(--spacing-md);
+      border-bottom: 2px solid var(--color-border-light);
+    }
+  }
+  
+  .tax-details-section {
+    background: var(--color-bg-primary);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .tax-results-section {
+    background: var(--color-bg-primary);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-sm);
+    
+    .no-results {
+      text-align: center;
+      padding: var(--spacing-2xl);
+      color: var(--color-text-secondary);
+      
+      p {
+        font-size: var(--font-size-lg);
+        margin: 0;
+      }
+    }
+  }
+}
