@@ -1,27 +1,33 @@
-import React from 'react'
-import { TaxCalculation } from '../types/tax'
-import { formatCurrency, formatPercentage } from '../utils/taxCalculations'
-import './TaxResults.scss'
+import React from "react";
+import { TaxCalculation } from "../types/tax";
+import { formatCurrency, formatPercentage } from "../utils/taxCalculations";
+import "./TaxResults.scss";
 
 interface TaxResultsProps {
-  calculation: TaxCalculation
+  calculation: TaxCalculation;
+  taxYear: string;
 }
 
-const TaxResults: React.FC<TaxResultsProps> = ({ calculation }) => {
-  const { refundOrOwed, breakdown, effectiveTaxRate, marginalTaxRate } = calculation
+const TaxResults: React.FC<TaxResultsProps> = ({ calculation, taxYear }) => {
+  const { refundOrOwed, breakdown, effectiveTaxRate, marginalTaxRate } =
+    calculation;
 
   return (
     <div className="tax-results">
       <div className="result-headline">
         {refundOrOwed.refund ? (
           <>
-            <h3>For the 2025 tax year, your estimated refund is</h3>
-            <div className="amount refund">{formatCurrency(refundOrOwed.refund)}</div>
+            <h3>For the {taxYear} tax year, your estimated refund is</h3>
+            <div className="amount refund">
+              {formatCurrency(refundOrOwed.refund)}
+            </div>
           </>
         ) : (
           <>
-            <h3>For the 2025 tax year, your estimated taxes owed are</h3>
-            <div className="amount owed">{formatCurrency(refundOrOwed.amountOwed!)}</div>
+            <h3>For the {taxYear} tax year, your estimated taxes owed are</h3>
+            <div className="amount owed">
+              {formatCurrency(refundOrOwed.amountOwed!)}
+            </div>
           </>
         )}
       </div>
@@ -32,10 +38,12 @@ const TaxResults: React.FC<TaxResultsProps> = ({ calculation }) => {
           <span>Gross income</span>
           <span>{formatCurrency(breakdown.grossIncome)}</span>
         </div>
-        <div className="breakdown-item deduction">
-          <span>Standard deduction</span>
-          <span>-{formatCurrency(breakdown.standardDeduction)}</span>
-        </div>
+        {breakdown.standardDeduction > 0 && (
+          <div className="breakdown-item deduction">
+            <span>Standard deduction</span>
+            <span>-{formatCurrency(breakdown.standardDeduction)}</span>
+          </div>
+        )}
         <div className="breakdown-item deduction">
           <span>Retirement contributions</span>
           <span>-{formatCurrency(breakdown.retirementContributions)}</span>
@@ -82,7 +90,7 @@ const TaxResults: React.FC<TaxResultsProps> = ({ calculation }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TaxResults
+export default TaxResults;

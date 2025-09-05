@@ -111,7 +111,10 @@ const TaxCalculator: React.FC = () => {
         <div className="tax-results-section">
           <h2>Federal Income Tax Breakdown:</h2>
           {calculation ? (
-            <TaxResults calculation={calculation} />
+            <TaxResults
+              calculation={calculation}
+              taxYear={form.getValues().taxYear}
+            />
           ) : (
             <div className="no-results">
               <p>Enter your tax details to see your estimated tax breakdown.</p>
